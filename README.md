@@ -1,5 +1,5 @@
 # fix-babel-class
-A runtime one-off fix for Babel transpiled classes.
+A runtime one-off fix for Babel [broken](https://github.com/babel/babel/issues/4480) transpiled classes.
 
 ```js
 class List extends Array {}
