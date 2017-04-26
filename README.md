@@ -12,8 +12,11 @@ fixBabelClass(List);
 fixBabelClass(CustomElement);
 
 console.log(
+  // this is **false** without the fix
   new List instanceof List,
+  // this **breaks** without the fix
   new CustomElement instanceof CustomElement,
+  // this **won't ever work** without the fix
   (new CustomElement).nodeName
 );
 ```
