@@ -1,0 +1,33 @@
+{
+  "name": "fix-babel-class",
+  "version": "0.0.0",
+  "description": "A runtime one-off fix for Babel transpiled classes.",
+  "main": "fix-babel-class.js",
+  "scripts": {
+    "build": "npm test && npm run minify && npm run size",
+    "minify": "uglifyjs fix-babel-class.js --comments=/^!/ --compress --mangle -o min.js",
+    "test": "node -e 'function List(){return(List.__proto__||Object.getPrototypeOf(List)).apply(this,arguments)};List.__proto__=Array;List.prototype.__proto__=Array.prototype;require(`./fix-babel-class`)(List);console.assert(new List instanceof List)'",
+    "size": "cat fix-babel-class.js | wc -c;cat min.js | wc -c;gzip -c min.js | wc -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebReflection/fix-babel-class.git"
+  },
+  "keywords": [
+    "babel",
+    "class",
+    "bug",
+    "native",
+    "extend",
+    "fix"
+  ],
+  "author": "Andrea Giammarchi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WebReflection/fix-babel-class/issues"
+  },
+  "homepage": "https://github.com/WebReflection/fix-babel-class#readme",
+  "devDependencies": {
+    "uglify-js": "^2.8.22"
+  }
+}
