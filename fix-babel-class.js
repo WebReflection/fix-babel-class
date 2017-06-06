@@ -15,14 +15,18 @@ var fixBabelClass = (function (O) {
       }
       Constructor = Parent.bind.apply(Parent, a);
       return new Constructor();
+    },
+    needsWrap = function (Parent) {
+      do {
+        var proto = Parent && gOPD(Parent, 'prototype');
+        if (proto && !proto.writable) return true;
+      } while (proto && (Parent = gPO(Parent)));
+      return false;
     }
   ;
   return function fixBabelClass(Class) {
-    var
-      Parent = gPO(Class),
-      proto = Parent && gOPD(Parent, 'prototype')
-    ;
-    return proto && !proto.writable ?
+    var Parent = gPO(Class);
+    return needsWrap(Parent) ?
       sPO(
         Class,
         sPO(
