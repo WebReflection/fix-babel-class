@@ -1,6 +1,6 @@
 {
   "name": "fix-babel-class",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A runtime one-off fix for Babel transpiled classes.",
   "main": "fix-babel-class.js",
   "scripts": {
